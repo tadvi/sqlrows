@@ -26,3 +26,14 @@ with sqlite3.connect('users.db') as conn:
         print(row)
 ```
 
+```python
+import sqlrows
+import sqlite3
+
+with sqlite3.connect('users.db') as conn:
+
+    users = sqlrows.Database(conn)
+    users.execute("INSERT INTO users VALUES (:name, :pass, :role)",
+        {'name': 'bob', 'pass': 'secret', 'role': 1})
+
+```
